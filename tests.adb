@@ -53,8 +53,9 @@ begin
    Pass;
 
    Title ("TEST 8 - Complex DNA Sequence Overlap");
-   Step ("8.1 Assert SCS('AGGTAB', 'GXTXAYB') = 'AGXGTXAYB'");
-   Assert (SCS_String ("AGGTAB", "GXTXAYB") = "AGXGTXAYB", "Complex DNA matching failed");
+   Step ("8.1 Assert SCS('AGGTAB', 'GXTXAYB') yields valid 9-char supersequence");
+   -- There are multiple optimal shortest common supersequences of length 9 for this input.
+   Assert (SCS_String ("AGGTAB", "GXTXAYB") = "AGXGTXAYB" or SCS_String ("AGGTAB", "GXTXAYB") = "AGGXTXAYB", "Complex DNA matching failed");
    Pass;
    
    Title ("TEST 9 - Identity Relation");
